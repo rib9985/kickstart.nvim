@@ -6,6 +6,7 @@ return {
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
+        javascript = { 'eslint' },
         markdown = { 'markdownlint' },
       }
 
@@ -22,7 +23,6 @@ return {
       --   inko = { "inko" },
       --   janet = { "janet" },
       --   json = { "jsonlint" },
-      --   markdown = { "vale" },
       --   rst = { "vale" },
       --   ruby = { "ruby" },
       --   terraform = { "tflint" },
