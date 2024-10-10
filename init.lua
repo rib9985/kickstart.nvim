@@ -383,6 +383,21 @@ require('lazy').setup(
           builtin.find_files { cwd = vim.fn.stdpath 'config' }
         end, { desc = '[S]earch [N]eovim files' })
       end,
+
+      -- Shortcut for Searching Telescope Todos/quickfixes in Project file
+      vim.keymap.set('n', '<leader>sT', function()
+        vim.cmd 'TodoQuickFix'
+      end, { desc = '[S]earch [T]odos and quickfixes' }),
+
+      -- Shortcut for Searching Telescope Todos/quickfixes in Telescope
+      vim.keymap.set('n', '<leader>sTT', function()
+        vim.cmd 'TodoTelescope'
+      end, { desc = '[S]earch [T]odos in [T]elescope' }),
+
+      -- Shortcut for Searching and Changing Color in Telescope
+      vim.keymap.set('n', '<leader>sCS', function()
+        vim.cmd 'Telescope colorscheme'
+      end, { desc = '[S]earch [C]olor[Schemes] in Telescope' }),
     },
 
     -- LSP Plugins
@@ -777,30 +792,26 @@ require('lazy').setup(
       -- change the command in the config to whatever the name of that colorscheme is.
       --
       -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-      'folke/tokyonight.nvim',
+      'catppuccin/nvim',
       priority = 1000, -- Make sure to load this before all the other start plugins.
       init = function()
         -- Load the colorscheme here.
         -- Like many other themes, this one has different styles, and you could load
         -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-        vim.cmd.colorscheme 'tokyonight-night'
+        require('catppuccin').setup {
+          integrations = {
+            harpoon = true,
+          },
+        }
+        vim.cmd.colorscheme 'catppuccin-mocha'
 
         -- You can configure highlights by doing something like:
-        vim.cmd.hi 'Comment gui=none'
-      end,
-    },
-
-    {
-      'catppuccin/nvim',
-      name = 'catppuccin',
-      priority = 1000,
-      init = function()
-        vim.cmd.colorscheme 'catppuccin'
+        -- vim.cmd.hi 'Comment gui='
       end,
     },
 
     -- Highlight todo, notes, etc in comments
-    { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+    { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = true } },
 
     { -- Collection of various small independent plugins/modules
       'echasnovski/mini.nvim',
