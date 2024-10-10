@@ -3,6 +3,7 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-  -- Load Harpoon
   require 'custom.plugins.harpoon-lazy',
+  require 'custom.plugins.startup',
+  require 'custom.plugins.ufo',
 }
