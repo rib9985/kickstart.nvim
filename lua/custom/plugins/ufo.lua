@@ -22,8 +22,11 @@ return {
     -- have equivalents for zr and zm because there is no saved fold level.
     -- Consequently, the vim-internal fold levels need to be disabled by setting
     -- them to 99.
-    vim.opt.foldlevel = 99
-    vim.opt.foldlevelstart = 99
+    vim.o.foldenable = true
+    vim.o.foldcolumn = 'auto:9'
+    vim.o.foldlevel = 99
+    vim.o.foldlevelstart = 99
+    vim.o.fillchars = 'eob: ,fold: ,foldopen: ,foldsep: ,foldclose:'
   end,
   opts = {
     provider_selector = function(_, ft, _)
