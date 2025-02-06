@@ -6,4 +6,7 @@ return {
   require 'custom.plugins.harpoon-lazy',
   require 'custom.plugins.startup',
   require 'custom.plugins.ufo',
+  require 'custom.plugins.helpview',
+  require 'custom.plugins.markview',
+  require 'custom.plugins.typr',
 }
